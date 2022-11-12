@@ -9,9 +9,19 @@ document.getElementById('test-button').addEventListener('click', function(){
     console.log(event);
     console.log('Link was clicked!');
 
-     /* remove class 'active' from all article links  */
+  /* remove class 'active' from all article links  */
+  const activeLinks = document.querySelectorAll('.titles a.active');
+
+  for(let activeLink of activeLinks){
+    activeLink.classList.remove('active');
+  }
 
   /* add class 'active' to the clicked link */
+  const activeArticles = document.querySelectorAll('.posts .active');
+
+  for(let activeArticle of activeArticles){
+    activeArticle.classList.remove('active');
+  }
 
   /* remove class 'active' from all articles */
 
