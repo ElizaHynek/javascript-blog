@@ -34,7 +34,7 @@ body {
   text-transform: uppercase;
   font-family: $font-header;
   font-weight: 600;
-  
+
   span {
     text-transform: none;
     font-weight: 400;
@@ -90,6 +90,7 @@ body {
 .list-horizontal {
   li {
     display: inline-block;
+    margin-left: 5px;
   }
 }
 
