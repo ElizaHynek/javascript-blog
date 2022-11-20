@@ -123,3 +123,27 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+.tags li {
+  display: inline;
+}
+
+.tags .tag-size-2 {
+  font-size: 110%;
+  color: rgb(13, 228, 228);
+}
+
+.tags .tag-size-3 {
+  font-size: 130%;
+  color: lightcoral;
+}
+
+.tags .tag-size-4 {
+  font-size: 160%;
+  color: purple;
+}
+
+.tags .tag-size-5 {
+  font-size: 190%;
+  color: darkgreen;
+}
