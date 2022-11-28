@@ -17,6 +17,7 @@ $font-text: 'Source Sans Pro', sans-serif;
 
 body {
   background: $color-light;
+  background-image: url('https://cdn.pixabay.com/photo/2011/12/14/12/21/orion-nebula-11107_960_720.jpg');
   font-family: $font-text;
   color: $color-dark;
   font-weight: 300;
@@ -58,7 +59,7 @@ body {
 }
 
 .sidebar, .posts {
-  background: $color-light;
+  background: pink;
   margin-right: 10px;
   padding: 40px;
   border: 1px solid $color-dark;
@@ -73,6 +74,7 @@ body {
   font-size: 104px;
   line-height: 1;
   text-align: center;
+  color: $color-light;
 }
 
 /* Lists */

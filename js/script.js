@@ -8,15 +8,18 @@ const templates = {
   authorColumnLink: Handlebars.compile(document.querySelector('#template-author-column-link').innerHTML)
 }
 
-const optArticleSelector = '.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list',
-  optArticleAuthorSelector ='.post-author',
-  optTagsListSelector = '.tags.list',
-  optCloudClassCount = '5',
-  optCloudClassPrefix = 'tag-size-',
-  optAuthorsListSelector = '.authors.list';
+const opts = {
+  articleSelector: '.post',
+  titleSelector: '.post-title',
+  titleListSelector: '.titles',
+  articleTagsSelector: '.post-tags .list',
+  articleAuthorSelector:'.post-author',
+  tagsListSelector: '.tags.list',
+  cloudClassCount: '5',
+  cloudClassPrefix: 'tag-size-',
+  authorsListSelector: '.authors.list',
+};
+
 
 
 const titleClickHandler = function(event){  /* there are all article links in the begining in html, so at first we have all information from them to build the function */
@@ -49,7 +52,7 @@ const titleClickHandler = function(event){  /* there are all article links in th
 function generateTitleLinks(customSelector = ''){
 
   /* [DONE] remove contents of titleList */
-  const titleList = document.querySelector(optTitleListSelector);
+  const titleList = document.querySelector(opts.titleListSelector);
 
   function clearTitleLinks(){
     titleList.innerHTML = '';
@@ -58,7 +61,7 @@ function generateTitleLinks(customSelector = ''){
 
   /* [DONE] find all the articles and save them to variable: articles */
 
-  const articles = document.querySelectorAll(optArticleSelector + customSelector);
+  const articles = document.querySelectorAll(opts.articleSelector + customSelector);
 
   let html = '';
 
@@ -72,7 +75,7 @@ function generateTitleLinks(customSelector = ''){
 
     /* [DONE] find the title element */
 
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    const articleTitle = article.querySelector(opts.titleSelector).innerHTML;
 
     /* [DONE/handlebars] create HTML of the link */
 
@@ -111,8 +114,8 @@ function calculateTagsParams(tags){
 }
 
 function calculateTagClass(count, params){
-  const classNumber = Math.floor( ( (count - params.min) / (params.max - params.min) ) * ( optCloudClassCount - 1 ) + 1 );
-  return optCloudClassPrefix + classNumber;
+  const classNumber = Math.floor( ( (count - params.min) / (params.max - params.min) ) * ( opts.cloudClassCount - 1 ) + 1 );
+  return opts.cloudClassPrefix + classNumber;
 }
 
 
@@ -122,13 +125,13 @@ function generateTags(){
   let allTags = {};
 
   /* [DONE] find all articles */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opts.articleSelector);
 
   /* [DONE] START LOOP: for every article: */
   for(let article of articles){
 
     /* [DONE] find tags wrapper */
-    const tagsWrapper = article.querySelector(optArticleTagsSelector);
+    const tagsWrapper = article.querySelector(opts.articleTagsSelector);
 
     /* [DONE] make html variable with empty string */
     let html = '';
@@ -166,7 +169,7 @@ function generateTags(){
   /* [DONE] END LOOP: for every article: */
   }
   /* [NEW] find list of tags in right column */
-  const tagList = document.querySelector(optTagsListSelector);
+  const tagList = document.querySelector(opts.tagsListSelector);
 
   const tagsParams = calculateTagsParams(allTags);
   console.log('tagsParams:', tagsParams);
@@ -250,13 +253,13 @@ function generateAuthors(){
   console.log('Object allAuthors', allAuthors);
 
   /* find all articles */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opts.articleSelector);
 
   /* START LOOP: for every article: */
   for(let article of articles){
 
     /* find authors wrapper */
-    const authorsWrapper = article.querySelector(optArticleAuthorSelector);
+    const authorsWrapper = article.querySelector(opts.articleAuthorSelector);
 
     /* get author from data-author attribute */
     const articleAuthor = article.getAttribute('data-author');
@@ -280,7 +283,7 @@ function generateAuthors(){
   }
 
   /* [NEW] find list of authors in right column */
-  const authorList = document.querySelector(optAuthorsListSelector);
+  const authorList = document.querySelector(opts.authorsListSelector);
 
   /* [NEW] create variable for all links HTML code */
   const allAuthorsData = {authors: []};
